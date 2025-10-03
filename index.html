@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azaz Bhai - Expert Personal Trainer & Gym Coach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 173, 181, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00adb5;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0d0d0d 100%);
+            padding: 120px 2rem 80px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 173, 181, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+
+        .hero-text h2 {
+            font-size: 1.4rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 173, 181, 0.4);
+            border: 3px solid #00adb5;
+            transition: transform 0.3s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 173, 181, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 173, 181, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid #00adb5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-text h3 {
+            color: #00adb5;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #d0d0d0;
+            line-height: 1.9;
+        }
+
+        .experience-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            padding: 0.6rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .expertise-list {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .expertise-list h3 {
+            color: #00adb5;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: rgba(0, 173, 181, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .expertise-item:hover {
+            background: rgba(0, 173, 181, 0.2);
+            transform: translateX(10px);
+        }
+
+        .expertise-item span {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #00adb5;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #00adb5;
+            box-shadow: 0 15px 40px rgba(0, 173, 181, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: #00adb5;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        /* Fitness Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border-left: 4px solid #00adb5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 173, 181, 0.3);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            color: #00adb5;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tip-card p {
+            color: #cccccc;
+            line-height: 1.7;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 4px solid #00adb5;
+        }
+
+        .testimonial-text {
+            color: #d0d0d0;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #00adb5;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid #00adb5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-info h3 {
+            color: #00adb5;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: #d0d0d0;
+        }
+
+        .contact-detail span {
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            color: #00adb5;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00adb5;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #2a2a3e;
+            border-radius: 10px;
+            background: #0d0d0d;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00adb5;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #00adb5, #0099ff);
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 173, 181, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 3px solid #00adb5;
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #00adb5;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0099ff;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card,
+        .tip-card,
+        .testimonial-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AZAZ FITNESS PRO</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tips">Fitness Tips</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Azaz Bhai</h1>
+                <h2>Expert Personal Trainer & Gym Coach</h2>
+                <p style="color: #d0d0d0; font-size: 1.2rem; margin-bottom: 2.5rem;">
+                    Helping you achieve strength, stamina, and perfect body transformation
+                </p>
+                <a href="https://wa.me/917046500786" class="cta-button">Contact Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.ibb.co/5WbZ9x85/IMG-20251003-WA0013.jpg" alt="Azaz Bhai - Expert Personal Trainer">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Azaz Bhai</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <span class="experience-badge">15+ Years of Excellence</span>
+                <h3>Passionate Fitness Professional</h3>
+                <p>
+                    With over 15 years of dedicated experience in the fitness industry, I have helped countless individuals transform their lives through personalized training, motivation, and expert guidance. My journey in fitness began with a personal passion that evolved into a professional mission to empower others.
+                </p>
+                <p>
+                    I believe that every person has untapped potential, and with the right training approach, proper nutrition, and unwavering motivation, anyone can achieve their dream physique and optimal health. My training philosophy combines proven scientific methods with practical, real-world application.
+                </p>
+                <p>
+                    Whether you're a complete beginner taking your first steps into fitness, or an experienced athlete looking to break through plateaus, I provide customized solutions that deliver measurable, sustainable results.
+                </p>
+            </div>
+            <div class="expertise-list">
+                <h3>Areas of Expertise</h3>
+                <div class="expertise-item">
+                    <span>💪</span>
+                    <strong>Personal Training & One-on-One Coaching</strong>
+                </div>
+                <div class="expertise-item">
+                    <span>🏋️</span>
+                    <strong>Bodybuilding & Strength Training</strong>
+                </div>
+                <div class="expertise-item">
+                    <span>🔥</span>
+                    <strong>Weight Loss & Fat Reduction</strong>
+                </div>
+                <div class="expertise-item">
+                    <span>💎</span>
+                    <strong>Muscle Gain & Fitness Transformation</strong>
+                </div>
+                <div class="expertise-item">
+                    <span>🥗</span>
+                    <strong>Nutrition & Diet Planning</strong>
+                </div>
+                <div class="expertise-item">
+                    <span>🎯</span>
+                    <strong>Performance Enhancement & Sports Conditioning</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">My Training Programs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Customized Gym Training</h3>
+                <p>Personalized workout programs designed specifically for your body type, fitness level, and goals. Every rep, every set - optimized for maximum results.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔥</div>
+                <h3>Weight Loss & Fat Loss</h3>
+                <p>Scientifically designed fat-burning programs that help you shed unwanted weight while preserving lean muscle mass and boosting metabolism.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💪</div>
+                <h3>Muscle Building & Sculpting</h3>
+                <p>Strategic muscle-building programs using progressive overload, proper form, and targeted nutrition to build strength and size.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🥗</div>
+                <h3>Nutrition & Diet Planning</h3>
+                <p>Comprehensive meal plans tailored to your goals, preferences, and lifestyle. Fuel your body right for optimal performance and recovery.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Online & Offline Coaching</h3>
+                <p>Flexible training options - train with me in person at the gym or get expert guidance online with video calls and detailed workout plans.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Fitness Workshops & Tips</h3>
+                <p>Educational sessions covering proper form, injury prevention, supplement guidance, and insider tips to maximize your gym performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitness Tips Section -->
+    <section id="tips">
+        <h2 class="section-title">Expert Fitness Tips</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">💪</div>
+                <h3>Top 5 Exercises for Quick Muscle Gain</h3>
+                <p>Focus on compound movements: Squats, Deadlifts, Bench Press, Pull-ups, and Overhead Press. These exercises engage multiple muscle groups, trigger maximum hormone release, and deliver the fastest results for building mass and strength.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">⚠️</div>
+                <h3>Common Gym Mistakes & How to Avoid Them</h3>
+                <p>Avoid ego lifting, neglecting form, skipping warm-ups, and training the same muscles daily. Focus on progressive overload, proper rest, and consistent form. Quality always trumps quantity in the gym.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🥗</div>
+                <h3>Diet Tips for Effective Fat Loss</h3>
+                <p>Create a calorie deficit through balanced nutrition. Prioritize protein (1g per lb body weight), eat whole foods, stay hydrated, avoid liquid calories, and maintain consistency. Pair with regular training for best results.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🚀</div>
+                <h3>Workout Motivation for Beginners</h3>
+                <p>Set realistic goals, track your progress, find a training partner, celebrate small wins, and remember why you started. Results don't happen overnight - trust the process and stay committed to your journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">Client Success Stories</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Azaz Bhai completely transformed my approach to fitness. Lost 18kg in 6 months while gaining muscle! His knowledge, motivation, and personalized approach made all the difference."</p>
+                <p class="testimonial-author">Rahul Shah</p>
+                <p class="testimonial-role">Weight Loss Client</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Best trainer I've ever worked with! His expertise in bodybuilding helped me compete in my first show. The diet plans and training intensity were exactly what I needed."</p>
+                <p class="testimonial-author">Vikram Patel</p>
+                <p class="testimonial-role">Bodybuilding Client</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As a beginner, I was intimidated by gyms. Azaz Bhai made me feel comfortable, taught me proper form, and now fitness is a lifestyle for me. Forever grateful!"</p>
+                <p class="testimonial-author">Priya Desai</p>
+                <p class="testimonial-role">Beginner Transformation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get Started Today</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-detail">
+                    <span>📱</span>
+                    <div>
+                        <strong>Phone / WhatsApp</strong><br>
+                        +91 70465 00786
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <span>📍</span>
+                    <div>
+                        <strong>Location</strong><br>
+                        himmatnager, Gujarat, India
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <span>⏰</span>
+                    <div>
+                        <strong>Training Hours</strong><br>
+                        Mon - Sat: 5:00 AM - 10:00 PM<br>
+                        Sunday: By Appointment
+                    </div>
+                </div>
+                <a href="https://wa.me/917046500786" class="cta-button" style="margin-top: 2rem;">
+                    WhatsApp Me Now
+                </a>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Fitness Goal</label>
+                        <textarea id="message" placeholder="Tell me about your fitness goals and what you'd like to achieve..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">
+            <strong>Azaz Bhai - Expert Personal Trainer & Gym Coach</strong>
+        </p>
+        <p>&copy; 2025 All Rights Reserved.</p>
+        <p style="margin-top: 1rem; color: #00adb5; font-weight: 500;">
+            Transform Your Body. Transform Your Life.
+        </p>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Hi Azaz Bhai! 👋%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0A%0AFitness Goal:%0A${message}`;
+            const whatsappURL = `https://wa.me/917046500786?text=${whatsappMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            alert('Opening WhatsApp to connect with Azaz Bhai...');
+        });
+
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .tip-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
